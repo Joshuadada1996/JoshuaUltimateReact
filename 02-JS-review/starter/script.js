@@ -147,7 +147,7 @@ function getBook(id) {
 //allows you to take values from arrays or objects and set them to individual variables
 
 //Rest Operator
-//allows you to get the rest of the values of the array or objects and applies that into an array or object
+//allows you to get the rest of the values of the array or objects and applies that into an array or object / so basically allows you to get the REST of the values left over of an array
 
 //Spread Operator
 //Same syntax (...) as the Rest Operator, and can be used in both arrays and objects
@@ -157,6 +157,7 @@ function getBook(id) {
 //Spreads out properties from object to a new object
 // can also use it to update/override properties from an object
 // will only work if applied after a property is declared so at the end of the updated object
+// adds an additional value to the array
 const book = getBook(3);
 book;
 // const title = book.title;
@@ -178,7 +179,7 @@ newGenres;
 
 const updatedBook = {
   ...book,
-  //Adding a new property
+  //Adding a new property, this is because this is a new property
   moviePublicationDate: "2001-12-19",
   // Overwriting an existing property
   pages: 1210,
@@ -267,6 +268,5 @@ function getTotalReviewCount(book) {
   return goodreads + librarything;
 }
 console.log(getTotalReviewCount(book));
-//
-//
-//
+
+//s
