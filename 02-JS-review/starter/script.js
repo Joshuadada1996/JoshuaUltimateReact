@@ -240,6 +240,16 @@ console.log(0 && "Some String");
 console.log(true || "Some String");
 console.log(false || "Some String");
 
+//true || anything = true e.g. true || console.log('hello') = true
+//true || true = true
+//true || false = true
+//false || anything will read the value e.g. false || console.log('hello') = hello
+//this is because false or something could be true
+
+//false && anything = false e.g. false && console.log('hello) = false
+//true && anything = true e.g. true && console.log('hello) = hello
+//this is because it doesn't know if it's going to be false or true
+
 console.log(book.translations.spanish);
 const spanishTranslation = book.translations.spanish || "NOT TRANSLATED";
 spanishTranslation;
