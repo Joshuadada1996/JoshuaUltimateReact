@@ -158,6 +158,8 @@ function getBook(id) {
 // can also use it to update/override properties from an object
 // will only work if applied after a property is declared so at the end of the updated object
 // adds an additional value to the array
+
+/*
 const book = getBook(3);
 book;
 // const title = book.title;
@@ -279,4 +281,53 @@ function getTotalReviewCount(book) {
 }
 console.log(getTotalReviewCount(book));
 
-//s
+*/
+
+function getTotalReviewCount(book) {
+  const goodreads = book.reviews.goodreads?.reviewsCount;
+  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+  librarything;
+  return goodreads + librarything;
+}
+const books = getBooks();
+books;
+//Map Method
+//Map method will loop through an array and return a new array with the same length with some operation applied, to each of the elements of the original array
+//Easier terms, the method will loop through the array and return a new array and change the value of the elements in the new array
+// it is also possible to chain array functions as well so filter.map.reduce and so much more
+//this will map through the array and return the values in the array multiplied by two
+const x = [1, 2, 3, 4, 5].map((el) => el * 2);
+console.log(x);
+
+const titles = books.map((book) => book.title);
+titles;
+
+const essentialData = books.map((book) => ({
+  title: book.title,
+  author: book.author,
+  reviewsCount: getTotalReviewCount(book),
+}));
+essentialData;
+
+//Filter Method
+// Filters out some elements of the array based on a condition
+// you can filter inside of a filter, this is called chaining
+//Filters anything that doesn't meet the condition
+const longBooksWithMovie = books
+  .filter((book) => book.pages > 500)
+  .filter((book) => book.hasMovieAdaptation);
+longBooksWithMovie;
+
+const adventureBooks = books
+  .filter((books) => books.genres.includes("adventure"))
+  .map((book) => book.title);
+adventureBooks;
+
+//Reduce Method
+// the most versatile and powerful array method
+// can probably emplement all the other methods, using the reduce, but there is no point since it's easier to just use them as they are
+//commonly used to add together numbers or to perform operations/mathematical operations with numbers
+//acc(accumilator) the acc is the current value of the final value
+
+const pagesAllBooks = books.reduce((acc, book) => acc + book.pages, 0);
+pagesAllBooks;
