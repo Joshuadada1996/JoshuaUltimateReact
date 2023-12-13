@@ -329,6 +329,59 @@ adventureBooks;
 // can probably implement all the other methods, using the reduce, but there is no point since it's easier to just use them as they are
 //commonly used to add together numbers or to perform operations/mathematical operations with numbers
 //acc(accumilator) the acc is the current value of the final
+//reduce can also be used in arrays and objects
 
-const pagesAllBooks = books.reduce((acc, book) => acc + book.pages, 0); // it will get called wit hthe current element and the current value ofthe accumilator which starts at 0 / accumilate means to change
+// sum is the accumulator
+const pagesAllBooks = books.reduce((sum, book) => sum + book.pages, 0); // it will get called wit hthe current element and the current value ofthe accumilator which starts at 0 / accumilate means to change
+// the accumumulator is the current value of the final value that we want to boil the array down to, in this case - the pages of all the books combined, which starts at zero, in the first iteration the accumulator will be 0
+// the accumulator and pages get added together, so the first iteration is 1216, then followed by the next object, which will be 1216 + 295, followed on by the rest of
+// accumulator is basically a pile onto which we put more and more, until we reach the final result.
 pagesAllBooks;
+
+//Sort Method
+// we can use this method to sort an array
+// there will be two arguments in the sort array metho - usually named a and b
+// to sort in an ascending way it will be a - b  - vice verse will be b - a
+// a and b is hte current value and the next value, when we return a negative value, the two numbers will be sorted in an ascending way, smaller comes first seocond come after
+// this is not a functional method so it will change the original array
+// it is advised to not mutate data so it's advised to do something like a slice method before the sort to make a copy of the array
+const arr = [3, 7, 1, 9, 6];
+const sorted = arr.slice().sort((a, b) => a - b);
+arr;
+sorted;
+
+// we usually have an array of objects to sort, which is more practical e.g. a.pages - b.pages
+
+const sortedByPages = books.slice().sort((a, b) => b.pages - a.pages);
+sortedByPages;
+
+// Working with immutable arrays
+//To add, delete and update elements of an array without changing the original ones
+
+// 1) Add book object to array
+const newBook = {
+  id: 6,
+  title: "Harry Potter and the Chamber of Secrets",
+  author: "J. K. Rowling",
+};
+
+const booksAfterAdd = [...books, newBook]; // spreads all the books into a new created array and adds another object
+booksAfterAdd;
+
+// 2) Delete book object from array
+// filter array is needed for this
+const booksAfterDelete = booksAfterAdd.filter((book) => book.id !== 3); // becaues the condition in the call back returned a false value, the object will not be in the final array
+booksAfterDelete;
+
+// 3) Update book object in the array
+const booksAfterUpdate = booksAfterDelete.map((book) =>
+  book.id === 1 ? { ...book, pages: 1210 } : book
+);
+booksAfterUpdate;
+
+//to summarize
+// To add a new object to an array, we create a new array, spread the current element and add a new element
+// To delete one, we need to use filter, because it makes the resulting array shorter, then we keep all the book elements, where the id is different than the one we want to delete
+// To update, we use the map method becuase hte map method creates an array which has the same length as the original array - when we are at the ID we are looking for(which we want to manipulate), we create a new object
+// and override the property we want to manipulate, and then for all the other books we return the book unchanged
+// examples above
