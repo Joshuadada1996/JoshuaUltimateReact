@@ -283,6 +283,7 @@ console.log(getTotalReviewCount(book));
 
 */
 
+/*
 function getTotalReviewCount(book) {
   const goodreads = book.reviews.goodreads?.reviewsCount;
   const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
@@ -385,3 +386,42 @@ booksAfterUpdate;
 // To update, we use the map method becuase hte map method creates an array which has the same length as the original array - when we are at the ID we are looking for(which we want to manipulate), we create a new object
 // and override the property we want to manipulate, and then for all the other books we return the book unchanged
 // examples above
+*/
+
+//Async
+
+//PROMISES
+//Async to fetch data, to load data from an external web
+// uses the fetch api - which is a function that is called fetch(), and we can pass a url of an API into it
+// fetching data will take some time because javascript will need to do a http request, needs to wait until that request is processed, and then needs to download that data from the server
+// Promise can be pending(when it is still doing something in the background) or rejected(if there is an error) or fullfilled(which means that the data successfully arrived)
+//We are looking for the fullfilled state, which can be handled using and or adding the then method
+// then method is called as soon as the promise is fullfilled aka as soon as it successfully got back with the data
+// promises are used for more than data fetching, but this is an example
+//then method has a callback function which is executed as soon as the data arrived
+// needs to be converted from JSON into a javascript object
+// res.json also takes time, so it requires another then, since it's another async operation
+/*
+fetch("https://jsonplaceholder.typicode.com/todos")
+  .then((res) => res.json())
+  .then((data) => console.log(data));
+// js will not wait until the data above is fetched
+console.log("jonas");
+*/
+
+//Await
+// Allows us to wait until the promise is completed, before moving onto the next line
+// makes the code neater/cleaner and easier to read
+// doesn't use the then .handlers
+//await is a way to stop/pause code inside of a function - ooks more normal
+async function getTodos() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/todos"); // await waits until promise is fullfilled/completed and will not automatically move until the next line like it usually does
+  const data = await res.json();
+  console.log(data);
+
+  return data;
+}
+const todos = getTodos(); // function is executed but waits, but only waits with the  async function and only with the lines that have the await keyword  ^
+console.log(todos);
+//todos is a promise, so the result value of the async function, is always just a promise
+console.log("joshua");
