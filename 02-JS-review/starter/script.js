@@ -311,23 +311,24 @@ essentialData;
 
 //Filter Method
 // Filters out some elements of the array based on a condition
+// if the result of the condition is true, the element/elements will go into the current array, if it's false it will get filtered out
 // you can filter inside of a filter, this is called chaining
 //Filters anything that doesn't meet the condition
 const longBooksWithMovie = books
-  .filter((book) => book.pages > 500)
-  .filter((book) => book.hasMovieAdaptation);
+  .filter((book) => book.pages > 500) //  .filter((book) => book.pages > 500 && book.hasMovieAdaptation) - this also works
+  .filter((book) => book.hasMovieAdaptation); // this is already a boolean value, so no condition needs to be added into the callback function
 longBooksWithMovie;
 
 const adventureBooks = books
-  .filter((books) => books.genres.includes("adventure"))
-  .map((book) => book.title);
+  .filter((books) => books.genres.includes("adventure")) // include always returns true or false, so if the genres include adventure it will filter in the books with adventures
+  .map((book) => book.title); // after filtering out genres with adventure we can get the titles of books by mapping it
 adventureBooks;
 
 //Reduce Method
 // the most versatile and powerful array method
-// can probably emplement all the other methods, using the reduce, but there is no point since it's easier to just use them as they are
+// can probably implement all the other methods, using the reduce, but there is no point since it's easier to just use them as they are
 //commonly used to add together numbers or to perform operations/mathematical operations with numbers
-//acc(accumilator) the acc is the current value of the final value
+//acc(accumilator) the acc is the current value of the final
 
-const pagesAllBooks = books.reduce((acc, book) => acc + book.pages, 0);
+const pagesAllBooks = books.reduce((acc, book) => acc + book.pages, 0); // it will get called wit hthe current element and the current value ofthe accumilator which starts at 0 / accumilate means to change
 pagesAllBooks;
