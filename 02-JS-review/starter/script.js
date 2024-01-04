@@ -312,7 +312,7 @@ essentialData;
 
 //Filter Method
 // Filters out some elements of the array based on a condition
-// if the result of the condition is true, the element/elements will go into the current array, if it's false it will get filtered out
+// if the result of the condition is true, the element/elements will go into the current array, if it's false it will get filte  out
 // you can filter inside of a filter, this is called chaining
 //Filters anything that doesn't meet the condition
 const longBooksWithMovie = books
