@@ -72,6 +72,7 @@ function Header() {
     </header>
   );
 }
+
 function Menu() {
   const pizzas = pizzaData;
   // const pizzas = [];
