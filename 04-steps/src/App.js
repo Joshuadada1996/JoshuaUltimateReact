@@ -7,6 +7,15 @@ const messages = [
 ];
 
 export default function App() {
+  return (
+    <div>
+      <Steps />
+      <Steps />
+    </div>
+  );
+}
+
+function Steps() {
   //setting state, first variable is the variable, second is the updated
   const [step, setStep] = useState(1);
 
@@ -24,7 +33,7 @@ export default function App() {
   }
   //To use the first variable in the code
   return (
-    <>
+    <div>
       <button className="close" onClick={() => setIsOpen((is) => !is)}>
         &times;
       </button>
@@ -55,6 +64,6 @@ export default function App() {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
