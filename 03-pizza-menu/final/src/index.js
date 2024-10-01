@@ -85,7 +85,7 @@ function Menu() {
           </p>
 
           <ul className="pizzas">
-            {pizzas.map((pizza) => (
+            {pizzas.map(() => (
               <Pizza pizzaObj={pizza} key={pizza.name} />
             ))}
           </ul>
@@ -168,7 +168,9 @@ function Order({ closeHour, openHour }) {
         We're open from {openHour}:00 to {closeHour}:00. Come visit us or order
         online.
       </p>
-      <button className="btn">Order</button>
+      <bu tton className="btn">
+        Order
+      </bu>
     </div>
   );
 }
